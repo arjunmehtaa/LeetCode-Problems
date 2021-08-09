@@ -1,3 +1,6 @@
+/* Add Two Numbers */
+/* Solution by Arjun Mehta*/
+
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -8,8 +11,6 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-
-/* Solution by Arjun Mehta*/
 
 class Solution {
 public:
