@@ -7,3 +7,4 @@ class Solution:
             else:
                 num_to_find = target - nums[i]
                 dict[num_to_find] = i
+        return None
