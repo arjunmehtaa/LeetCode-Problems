@@ -1,3 +1,5 @@
+# Optimal Solution
+
 class Solution:
     def trap(self, height: List[int]) -> int:
         total = 0
@@ -20,31 +22,20 @@ class Solution:
                 b -= 1
         return total
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    # class Solution:
-    # def trap(self, height: List[int]) -> int:
-    #     total = 0
-    #     for i in range(0, len(height)):
-    #         max_l = 0
-    #         max_r = 0
-    #         for j in range(0,len(height)):
-    #             if j < i and height[j] > max_l:
-    #                 max_l = height[j]     
-    #             if j > i and height[j] > max_r:
-    #                 max_r = height[j]
-    #         water_level = min(max_l, max_r) - height[i]
-    #         if water_level > 0:
-    #             total += water_level
-    #     return total
+# Brute Force Solution
+
+# class Solution:
+# def trap(self, height: List[int]) -> int:
+#     total = 0
+#     for i in range(0, len(height)):
+#         max_l = 0
+#         max_r = 0
+#         for j in range(0,len(height)):
+#             if j < i and height[j] > max_l:
+#                 max_l = height[j]     
+#             if j > i and height[j] > max_r:
+#                 max_r = height[j]
+#         water_level = min(max_l, max_r) - height[i]
+#         if water_level > 0:
+#             total += water_level
+#     return total
