@@ -1,3 +1,5 @@
+# Optimal Solution
+
 class Solution:
     def backspaceCompare(self, s: str, t: str) -> bool:
         a = len(s) - 1
@@ -27,7 +29,6 @@ class Solution:
                 return True
             else:
                 return False
-        
         return True
 
 # Brute Force Solution
