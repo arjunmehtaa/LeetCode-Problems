@@ -3,6 +3,7 @@ class Solution:
         answer = 0
         for i in range(0, len(s)):
             if len(s)-1-i < answer:
+                print("breaking")
                 break
             data = set()
             j = i
