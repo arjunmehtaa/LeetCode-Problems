@@ -8,7 +8,6 @@ class Solution:
                 data.add(s[j])
                 j += 1
                 answer = max(answer, len(data))
-            print("data is ", data)
         return answer
             
                 
