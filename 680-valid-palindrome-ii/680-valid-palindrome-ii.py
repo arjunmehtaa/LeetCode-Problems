@@ -7,10 +7,7 @@ class Solution:
             if s[a] != s[b]:
                 x = s[a+1: b+1]
                 y = s[a: b]
-                if x == x[::-1] or y == y[::-1]:
-                    return True
-                else:
-                    return False
+                return x == x[::-1] or y == y[::-1]
             a += 1
             b -= 1
         return True
