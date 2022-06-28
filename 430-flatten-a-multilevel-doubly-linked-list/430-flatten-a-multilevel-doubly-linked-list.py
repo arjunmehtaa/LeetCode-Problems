@@ -7,6 +7,8 @@ class Node:
         self.next = next
         self.child = child
 """
+# Time Complexity: O(N)
+# Space Complexity: O(1)
 
 class Solution:
     def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
