@@ -4,6 +4,9 @@
 #         self.val = x
 #         self.next = None
 
+# Time Complexity: O(N)
+# Space Complexity: O(1)
+
 class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
         a = head
@@ -24,5 +27,4 @@ class Solution:
             current = current.next
             b = b.next
         return current
-            
-        
+    
