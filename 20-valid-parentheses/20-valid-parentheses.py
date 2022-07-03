@@ -1,3 +1,8 @@
+dict = {}
+dict[')'] = '('
+dict[']'] = '['
+dict['}'] = '{'
+
 class Solution:
     def isValid(self, s: str) -> bool:
         my_stack = []
@@ -7,21 +12,10 @@ class Solution:
             else:
                 if len(my_stack) == 0:
                     return False
-                if x == ')':
-                    value = my_stack.pop()
-                    if value != '(':
-                        return False
-                elif x == '}':
-                    value = my_stack.pop()
-                    if value != '{':
-                        return False
-                elif x == ']':
-                    value = my_stack.pop()
-                    if value != '[':
-                        return False
+                value = my_stack.pop()
+                if value != dict[x]:
+                    return False
         if len(my_stack) == 0:
             return True
         else:
             return False
-                    
-        
