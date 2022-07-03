@@ -1,7 +1,6 @@
 # Time Complexity   : O(N)
 # Space Complexity  : O(N)
 
-
 class Solution:
     def isValid(self, s: str) -> bool:
         map = {']':'[', '}':'{', ')':'('}
