@@ -1,21 +1,15 @@
-dict = {}
-dict[')'] = '('
-dict[']'] = '['
-dict['}'] = '{'
+# Time Complexity   : O(N)
+# Space Complexity  : O(N)
+
 
 class Solution:
     def isValid(self, s: str) -> bool:
-        my_stack = []
-        for x in s:
-            if x == '(' or x == '{' or x == '[':
-                my_stack.append(x)
+        map = {']':'[', '}':'{', ')':'('}
+        stack = []
+        for char in s:
+            if char in map.values():
+                stack.append(char)
             else:
-                if len(my_stack) == 0:
+                if len(stack) == 0 or stack.pop() != map[char]:
                     return False
-                value = my_stack.pop()
-                if value != dict[x]:
-                    return False
-        if len(my_stack) == 0:
-            return True
-        else:
-            return False
+        return len(stack) == 0
