@@ -13,25 +13,21 @@ class MyQueue:
     def pop(self) -> int:
         stack = self.stack
         reverse_stack = self.reverse_stack
-        while len(stack) > 0:
-            reverse_stack.append(stack.pop())
-        value = reverse_stack.pop()
-        while len(reverse_stack) > 0:
-            stack.append(reverse_stack.pop())
-        return value
+        if len(reverse_stack) == 0:
+            while len(stack) > 0:
+                reverse_stack.append(stack.pop())
+        return reverse_stack.pop()
 
     def peek(self) -> int:
         stack = self.stack
         reverse_stack = self.reverse_stack
-        while len(stack) > 0:
-            reverse_stack.append(stack.pop())
-        value = reverse_stack[len(reverse_stack)-1]
-        while len(reverse_stack) > 0:
-            stack.append(reverse_stack.pop())
-        return value
+        if len(reverse_stack) == 0:
+            while len(stack) > 0:
+                reverse_stack.append(stack.pop())
+        return reverse_stack[len(reverse_stack)-1]
 
     def empty(self) -> bool:
-        return len(self.stack) == 0
+        return len(self.stack) == 0 and len(self.reverse_stack) == 0
 
 # Your MyQueue object will be instantiated and called as such:
 # obj = MyQueue()
