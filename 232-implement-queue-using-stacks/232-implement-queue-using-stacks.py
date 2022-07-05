@@ -31,10 +31,7 @@ class MyQueue:
         return value
 
     def empty(self) -> bool:
-        if len(self.stack) == 0:
-            return True
-        else:
-            return False
+        return len(self.stack) == 0
 
 # Your MyQueue object will be instantiated and called as such:
 # obj = MyQueue()
