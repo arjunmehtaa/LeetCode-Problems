@@ -1,7 +1,11 @@
+# Quick Sort
+# Time Complexity   : O(N*LOG(N))
+# Space Complexity  : O(LOG(N))
+
 def quickSort(nums: List[int], start, end):
     if end <= start:
         return
-    mid = (end + start)//2
+    mid = (end + start) // 2
     pivot = end
     nums[mid], nums[pivot] = nums[pivot], nums[mid]
     i = start
