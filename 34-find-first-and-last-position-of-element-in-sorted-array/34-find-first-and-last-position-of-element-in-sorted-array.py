@@ -1,3 +1,6 @@
+# Time Complexity   : O(LOG(N))
+# Space Complexity  : O(1)
+
 def binarySearch(nums, target, left, right):
     while left <= right:
         mid = (left + right) // 2
