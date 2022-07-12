@@ -5,6 +5,9 @@
 #         self.left = left
 #         self.right = right
 
+# Time Complexity   : O(N)
+# Space Complexity  : O(N)
+
 def traverseTree(node, level):
     if node == None:
         return level
