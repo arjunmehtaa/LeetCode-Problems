@@ -7,12 +7,13 @@
 
 def traverseTree(node, level):
     if node == None:
-        return level-1
-    left = traverseTree(node.left, level+1)
-    right = traverseTree(node.right, level+1)
+        return level
+    level += 1
+    left = traverseTree(node.left, level)
+    right = traverseTree(node.right, level)
     return max(left, right)
 
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-        return traverseTree(root, 1)
+        return traverseTree(root, 0)
         
