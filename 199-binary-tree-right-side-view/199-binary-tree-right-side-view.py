@@ -21,7 +21,7 @@ def traverseTree(node, visited_levels, level, ans):
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         ans = []
-        traverseTree(root, [], 1, ans)
+        traverseTree(root, [], 0, ans)
         return ans
 
 # Solution using BFS
