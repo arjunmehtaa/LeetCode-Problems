@@ -9,18 +9,16 @@ class Solution:
         if not root:
             return []
         res = []
-        q = [root]
-        while len(q):
-            sub = []
-            size = len(q)
+        queue = [root]
+        while len(queue):
+            size = len(queue)
             count = 0
             while count < size:
-                node = q.pop(0)
-                sub.append(node.val)
+                node = queue.pop(0)
                 count += 1
                 if node.left:
-                    q.append(node.left)
+                    queue.append(node.left)
                 if node.right:
-                    q.append(node.right)
-            res.append(sub[len(sub) - 1])
+                    queue.append(node.right)
+            res.append(node.val)
         return res
