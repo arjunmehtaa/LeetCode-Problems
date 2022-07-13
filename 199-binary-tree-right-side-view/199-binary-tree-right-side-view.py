@@ -6,22 +6,24 @@
 #         self.right = right
 
 # Solution using DFS
+#
+# Time Complexity   : O(N)
+# Space Complexity  : O(N)
 
-def traverseTree(node, visited_levels, level, ans):
+def traverseTree(node, level, ans):
     if node == None:
         return -1
     level += 1
-    if level not in visited_levels:
-        visited_levels.append(level)
+    if level > len(ans):
         ans.append(node.val)
-    traverseTree(node.right, visited_levels, level, ans)
-    traverseTree(node.left, visited_levels, level, ans)
+    traverseTree(node.right, level, ans)
+    traverseTree(node.left, level, ans)
     
 
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         ans = []
-        traverseTree(root, [], 0, ans)
+        traverseTree(root, 0, ans)
         return ans
 
 # Solution using BFS
