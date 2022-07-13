@@ -19,7 +19,6 @@ def traverseTree(node, level, ans):
     traverseTree(node.right, level, ans)
     traverseTree(node.left, level, ans)
     
-
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         ans = []
