@@ -4,6 +4,10 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+# Time Complexity   : O(N)
+# Space Complexity  : O(N)
+
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         if not root:
