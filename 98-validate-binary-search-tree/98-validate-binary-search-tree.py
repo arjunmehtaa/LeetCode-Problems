@@ -10,7 +10,6 @@ class Solution:
             return True
         return traverseTree(root, -inf, inf)
 
-        
 def traverseTree(node, min, max):
     if node.val <= min or node.val >= max:
         return False
