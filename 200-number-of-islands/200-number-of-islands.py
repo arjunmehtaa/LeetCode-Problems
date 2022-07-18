@@ -1,3 +1,6 @@
+# Time Complexity   : O()
+# Space Complexity  : O()
+
 directions = [[-1,0], [0,1], [1,0], [0,-1]]
 
 class Solution:
@@ -7,7 +10,6 @@ class Solution:
         islands = 0
         for i in range(0, len(grid)):
             for j in range(0, len(grid[0])):
-                print("i,j is ", i, j)
                 if grid[i][j] == "1":
                     islands += 1
                     grid[i][j] = "0"
