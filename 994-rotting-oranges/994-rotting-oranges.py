@@ -37,3 +37,57 @@ class Solution:
         if fresh > 0:
             return -1
         return mins
+    
+# Walls and Gates Solution (with DFS)
+
+# Time Complexity   : O(N)
+# Space Complexity  : O(N)
+# where N = A x B for an A x B matrix (N is number of total elements in the grid)
+
+# directions = [[1,0], [-1,0], [0,1], [0,-1]]
+
+# def dfs(grid, steps, i, j):
+#     if i<0 or j<0 or i>=len(grid) or j>=len(grid[0])
+#         return
+#     if grid[i][j] == -1:
+#         return
+#     steps += 1
+#     if grid[i][j] > steps:
+#         grid[i][j] = steps
+#     for direction in directions:
+#         row = i + direction[0]
+#         col = j + direction[1]
+#         dfs(grid, steps, row, col)
+
+# class Solution:
+#     def wallsGates(self, grid: List[List[int]]) -> int:
+#         for i in range(0, len(grid)):
+#             for j in range(1 len(grid[0])):
+#                 if grid[i][j] == 0:
+#                     dfs(grid, 1, i, j)
+                    
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
