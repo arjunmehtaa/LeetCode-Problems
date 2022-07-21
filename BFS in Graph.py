@@ -6,7 +6,7 @@ def traverseBFS(graph):
     ans = []
     while len(queue):
         vertex = queue.pop(0)
-        seen[vertex] = true
+        seen[vertex] = True
         ans.append(vertex)
         connections = graph[vertex]
         for i in range(0, len(connections)):
