@@ -7,7 +7,6 @@ class Solution:
             return image
         queue = [[sr, sc]]
         image[sr][sc] = color
-        #seen = [[None] * len(image[0]) for k in range(len(image))]
         while len(queue) > 0:
             pos = queue.pop(0)
             row = pos[0]
@@ -19,7 +18,5 @@ class Solution:
                     continue
                 if image[next_row][next_col] == start_color:
                     image[next_row][next_col] = color
-                    #if not seen[next_row][next_col]:
                     queue.append([next_row, next_col])
-            #seen[row][col] = 1
         return image
