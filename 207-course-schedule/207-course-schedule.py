@@ -1,0 +1,31 @@
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        adj_list = {}
+        for i in range(0, len(prerequisites)):
+            if prerequisites[i][1] in adj_list:
+                adj_list[prerequisites[i][1]].append(prerequisites[i][0])
+            else:
+                adj_list[prerequisites[i][1]] = [prerequisites[i][0]]
+        for i in range(0, numCourses):
+            if i not in adj_list:
+                adj_list[i] = []
+        
+        for i in range(0, numCourses):
+            queue = []
+            seen = {}
+            for j in range(0, len(adj_list[i])):
+                queue.append(adj_list[i][j])
+            while len(queue) > 0:
+                current = queue.pop(0)
+                seen[current] = True
+                if current == i:
+                    return False
+                adj = adj_list[current]
+                for k in range(0, len(adj)):
+                    next = adj[k]
+                    if next not in seen:
+                        queue.append(next)
+        return True
+        
+        
+        
