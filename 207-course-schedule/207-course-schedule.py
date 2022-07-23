@@ -1,3 +1,6 @@
+# Time Complexity   : O(P + N^3) (P = WHERE SIZE OF PREREQ LIST)
+# Space Complexity  : O(N^2)
+
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         adj_list = {}
@@ -6,6 +9,7 @@ class Solution:
                 adj_list[prerequisites[i][1]].append(prerequisites[i][0])
             else:
                 adj_list[prerequisites[i][1]] = [prerequisites[i][0]]
+                
         for i in range(0, numCourses):
             if i not in adj_list:
                 adj_list[i] = []
