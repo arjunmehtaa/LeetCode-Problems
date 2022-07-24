@@ -1,4 +1,4 @@
-    # Most Optimal Solution (Bottom-up approach)
+# Most Optimal Solution (Bottom-up approach)
 
 # Time Complexity   : O(N)
 # Space Complexity  : O(1)
