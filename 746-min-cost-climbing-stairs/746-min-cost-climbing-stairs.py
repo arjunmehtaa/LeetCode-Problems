@@ -1,4 +1,4 @@
-# Most Optimal Solution (Bottom-up approach)
+# Most Optimal Solution (Bottom-up approach + no dp array)
 
 # Time Complexity   : O(N)
 # Space Complexity  : O(1)
@@ -6,13 +6,33 @@
 class Solution:
     def minCostClimbingStairs(self, cost: List[int]) -> int:
         n = len(cost)
-        dp = [None] * n
-        for i in range(0, len(cost)):
-            if i <= 1:
-                dp[i] = cost[i]
-            else:
-                dp[i] = cost[i] + min(dp[i-1], dp[i-2])
-        return min(dp[n-1], dp[n-2])
+        if n == 0:
+            return 0
+        if n == 1:
+            return cost[0]
+        dp_one = cost[0]
+        dp_two = cost[1]
+        for i in range(2, len(cost)):
+            current = cost[i] + min(dp_one, dp_two)
+            dp_one = dp_two
+            dp_two = current
+        return min(dp_one, dp_two)
+    
+# Better Optimal Solution (Bottom-up approach)
+#
+# Time Complexity   : O(N)
+# Space Complexity  : O(N)
+#
+# class Solution:
+#     def minCostClimbingStairs(self, cost: List[int]) -> int:
+#         n = len(cost)
+#         dp = [None] * n
+#         for i in range(0, len(cost)):
+#             if i <= 1:
+#                 dp[i] = cost[i]
+#             else:
+#                 dp[i] = cost[i] + min(dp[i-1], dp[i-2])
+#         return min(dp[n-1], dp[n-2])
 
 # Optimal Solution (Same as Brute Force + Memoization) (Top-down approach)
 #
