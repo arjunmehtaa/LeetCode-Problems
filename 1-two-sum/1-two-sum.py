@@ -7,6 +7,7 @@ class Solution:
             else:
                 diff = target - nums[i]
                 nums_to_find[diff] = i
+        return None
             
         
         
