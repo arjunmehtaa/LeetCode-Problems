@@ -5,16 +5,13 @@ class Solution:
         return a == b
         
 def getFinalString(s):
-    count = 0
-    for i in range(len(s)-1, -1, -1):
+    a = ""
+    for i in range(0, len(s)):
         if s[i] == "#":
-            s = s[:i] + s[i+1:]
-            count += 1
+            a = a[:-1]
         else:
-            if count > 0:
-                s = s[:i] + s[i+1:]
-                count -= 1
-    return s
+            a += s[i]
+    return a
         
         
         
