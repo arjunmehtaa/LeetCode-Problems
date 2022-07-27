@@ -1,6 +1,6 @@
 # Optimal Solution
 #
-# Time Complexity: O(n)
+# Time Complexity: O(N)
 # Space Complexity: O(1)
 
 class Solution:
