@@ -3,29 +3,38 @@
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
+#
+# Time Complexity: O(N)
+# Space Complexity: O(1)
 
 class Solution:
     def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
         count = 1
-        start = head
-        link = head
+        current = head
+        prev = current
+        
         while count < left:
-            link = start
-            start = start.next
-            count += 1
-        prev = None
-        current = start
+            prev = current
+            current = current.next
+            count += 1     
+            
+        reversed_head = None
+        tail = current
+        
         while count <= right:
             next = current.next
-            current.next = prev
-            prev = current
+            current.next = reversed_head
+            reversed_head = current
             current = next
             count += 1
-        start.next = current
-        if left == 1:
-            return prev
-        else:
-            link.next = prev
+            
+        prev.next = reversed_head
+        tail.next = current
+        
+        if left > 1:
             return head
+        else:
+            return reversed_head
+        
 
         
