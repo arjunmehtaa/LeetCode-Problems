@@ -4,13 +4,16 @@
 #         self.val = val
 #         self.next = next
 #
+# Time Complexity: O(N)
+# Space Complexity: O(1)
 
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         prev = None
-        while head:
-            next = head.next
-            head.next = prev
-            prev = head
-            head = next
+        current = head
+        while current:
+            next = current.next
+            current.next = prev
+            prev = current
+            current = next
         return prev
