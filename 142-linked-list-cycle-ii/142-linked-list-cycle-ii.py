@@ -4,27 +4,24 @@
 #         self.val = x
 #         self.next = None
 
-# Time Complexity: O(N)
-# Space Complexity: O(1)
-
 class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head:
+            return None
+        if not head.next:
+            return None
         a = head
         b = head
-        current = head
-        if head == None:
-            return None
-        while True:
+        while b.next:
             a = a.next
             b = b.next
-            if not b or not b.next:
+            if not b.next:
                 return None
             else:
                 b = b.next
             if a == b:
-                break
-        while current != b:
-            current = current.next
-            b = b.next
-        return current
-    
+                while head != a:
+                    head = head.next
+                    a = a.next
+                return a
+        return None
