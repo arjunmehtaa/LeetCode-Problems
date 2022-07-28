@@ -16,7 +16,7 @@ class Solution:
             if b == a:
                 return True
             a = a.next
-            if not b.next or not b.next.next:
+            if not b.next:
                 return False
             b = b.next.next 
         return False
