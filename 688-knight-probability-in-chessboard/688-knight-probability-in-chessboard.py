@@ -1,16 +1,16 @@
 directions = [[-1,-2], [-1,2], [-2,-1], [-2,1], [1,-2], [1,2], [2,-1], [2,1]]
 
 
-
-# Better Solution (Recursion + Memoization)
+# Most Optimal Solution (Bottom-up + Memoization + Optimize "dp" variable into prev_dp and curr_dp)
 #
 # Time Complexity   : O(N^2 * K)
 # Space Complexity  : O(N^2 * K)
 #
 class Solution:
     def knightProbability(self, n: int, k: int, row: int, column: int) -> float:
-        dp = [[[0 for _ in range(n)] for _ in range(n)] for _ in range(k+1)]
-        dp[0][row][column] = 1
+        prev_dp = [[0 for _ in range(n)] for _ in range(n)]
+        curr_dp = [[0 for _ in range(n)] for _ in range(n)]
+        prev_dp[row][column] = 1
         for step in range(1, k+1):
             for r in range(0, n):
                 for c in range(0, n):
@@ -18,12 +18,39 @@ class Solution:
                         prev_row = r + direction[0]
                         prev_col = c + direction[1]
                         if prev_row >= 0 and prev_row < n and prev_col >= 0 and prev_col < n:
-                            dp[step][r][c] += dp[step-1][prev_row][prev_col] / 8
+                            curr_dp[r][c] += prev_dp[prev_row][prev_col] / 8
+            prev_dp = curr_dp
+            curr_dp = [[0 for _ in range(n)] for _ in range(n)]
         res = 0
         for i in range(0, n):
             for j in range(0, n):
-                res += dp[k][i][j]
+                res += prev_dp[i][j]
         return res
+
+    
+
+# Bottom Up Solution
+#
+# Time Complexity   : O(N^2 * K)
+# Space Complexity  : O(N^2 * K)
+#
+# class Solution:
+#     def knightProbability(self, n: int, k: int, row: int, column: int) -> float:
+#         dp = [[[0 for _ in range(n)] for _ in range(n)] for _ in range(k+1)]
+#         dp[0][row][column] = 1
+#         for step in range(1, k+1):
+#             for r in range(0, n):
+#                 for c in range(0, n):
+#                     for direction in directions:
+#                         prev_row = r + direction[0]
+#                         prev_col = c + direction[1]
+#                         if prev_row >= 0 and prev_row < n and prev_col >= 0 and prev_col < n:
+#                             dp[step][r][c] += dp[step-1][prev_row][prev_col] / 8
+#         res = 0
+#         for i in range(0, n):
+#             for j in range(0, n):
+#                 res += dp[k][i][j]
+#         return res
         
         
 # Better Solution (Recursion + Memoization)
