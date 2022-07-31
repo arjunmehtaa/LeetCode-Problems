@@ -4,7 +4,7 @@ directions = [[-1,-2], [-1,2], [-2,-1], [-2,1], [1,-2], [1,2], [2,-1], [2,1]]
 # Most Optimal Solution (Bottom-up + Memoization + Optimize "dp" variable into prev_dp and curr_dp)
 #
 # Time Complexity   : O(N^2 * K)
-# Space Complexity  : O(N^2 * K)
+# Space Complexity  : O(N^2)
 #
 class Solution:
     def knightProbability(self, n: int, k: int, row: int, column: int) -> float:
