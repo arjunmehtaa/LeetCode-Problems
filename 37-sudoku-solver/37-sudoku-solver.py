@@ -1,3 +1,6 @@
+# Time Complexity   : O((9!)^9)
+# Space Complexity  : O(81)
+
 class Solution:
     def solveSudoku(self, board: List[List[str]]) -> None:
         """
