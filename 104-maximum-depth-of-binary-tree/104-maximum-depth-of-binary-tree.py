@@ -4,19 +4,14 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-
-# Time Complexity   : O(N)
-# Space Complexity  : O(N)
-
-def traverseTree(node, level):
-    if node == None:
-        return level
-    level += 1
-    left = traverseTree(node.left, level)
-    right = traverseTree(node.right, level)
-    return max(left, right)
-
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-        return traverseTree(root, 0)
+        ans = traverse(root)
+        return ans
         
+def traverse(node):
+    if not node:
+        return 0
+    left = traverse(node.left)
+    right = traverse(node.right)
+    return 1 + max(left, right)
