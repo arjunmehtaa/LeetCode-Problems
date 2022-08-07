@@ -7,19 +7,17 @@
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         ans = []
-        visited = []
-        traverse(root, 0, visited, ans)
+        traverse(root, 0, ans)
         return ans
         
-def traverse(node, level, visited, ans):
+def traverse(node, level, ans):
     if not node:
         return
-    if level not in visited:
-        ans.append(node.val)
-        visited.append(level)
     level += 1
-    traverse(node.right, level, visited, ans)
-    traverse(node.left, level, visited, ans)
+    if level > len(ans):
+        ans.append(node.val)
+    traverse(node.right, level, ans)
+    traverse(node.left, level, ans)
     
     
         
