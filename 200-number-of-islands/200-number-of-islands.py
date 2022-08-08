@@ -1,3 +1,7 @@
+# Let N = A x B where A x B are the dimensions of the grid
+# Time Complexity   : O(N^2)
+# Space Complexity  : O(1)
+
 directions = [[-1,0], [1,0], [0,-1], [0,1]]
 
 class Solution:
@@ -16,7 +20,7 @@ class Solution:
 def traverseIsland(grid, i, j):
     queue = [[i, j]]
     while len(queue) > 0:
-        element = queue.pop(0)
+        element = queue.pop()
         row = element[0]
         col = element[1]
         for direction in directions:
@@ -28,7 +32,10 @@ def traverseIsland(grid, i, j):
                 grid[next_row][next_col] = "0"
                 queue.append([next_row, next_col])
             
-            
+# 1 1 1 1
+# 1 1 1 1
+# 1 1 1 1
+# 1 1 1 1
             
             
     
