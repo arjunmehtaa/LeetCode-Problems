@@ -1,5 +1,5 @@
 # Time Complexity   : O(M X N) 		(It is O(2N) because even though we might end up traversing through 
-#					the entire grid, we would never encounter that island again)
+#					                the entire grid, we would never encounter that island again)
 # Space Complexity  : O(max(M, N))	(where matrix is N X M)
 
 directions = [[-1,0], [0,1], [1,0], [0,-1]]
