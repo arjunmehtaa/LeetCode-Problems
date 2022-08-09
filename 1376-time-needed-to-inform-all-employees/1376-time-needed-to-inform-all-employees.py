@@ -6,15 +6,13 @@ class Solution:
                 adjList[manager[i]] = [i]
             else:
                 adjList[manager[i]].append(i)
-        return dfs(informTime, headID, adjList)
-    
-def dfs(informTime, current, adjList):
+        return dfs(adjList, headID, informTime)
+        
+def dfs(adjList, current, informTime):
     max_time = 0
     if current in adjList:
         subs = adjList[current]
         for i in range(0, len(subs)):
-            branch_time = dfs(informTime, subs[i], adjList)
-            max_time = max(max_time, branch_time)
-    return max_time + informTime[current]
-            
-        
+            branch_time = dfs(adjList, subs[i], informTime)
+            max_time = max(branch_time, max_time)
+    return informTime[current] + max_time
