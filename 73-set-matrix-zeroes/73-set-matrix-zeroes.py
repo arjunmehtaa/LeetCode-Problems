@@ -5,10 +5,10 @@ class Solution:
         """
         Do not return anything, modify matrix in-place instead.
         """
-        ignore = []
+        ignore = set()
         for i in range(0, len(matrix)):
             for j in range(0, len(matrix[0])):
-                if matrix[i][j] == 0 and [i,j] not in ignore:
+                if matrix[i][j] == 0 and (i,j) not in ignore:
                     traverse(i, j, matrix, ignore)
                         
 def traverse(i, j, matrix, ignore):
@@ -24,6 +24,6 @@ def traverse(i, j, matrix, ignore):
                 continue
             if matrix[next_row][next_col] != 0:
                 matrix[next_row][next_col] = 0
-                ignore.append([next_row, next_col])
+                ignore.add((next_row, next_col))
             queue.append([next_row + direction[0], next_col + direction[1]])
         
