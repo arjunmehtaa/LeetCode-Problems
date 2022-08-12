@@ -1,14 +1,15 @@
-# Time Complexity   : O(N)
-# Space Complexity  : O(N)
+map = {")":"(", "}":"{", "]":"["}
 
 class Solution:
     def isValid(self, s: str) -> bool:
-        map = {']':'[', '}':'{', ')':'('}
         stack = []
-        for char in s:
-            if char in map.values():
-                stack.append(char)
-            else:
-                if len(stack) == 0 or stack.pop() != map[char]:
+        for i in range(0, len(s)):
+            if s[i] in map:
+                if len(stack) == 0 or stack.pop() != map[s[i]]:
                     return False
-        return len(stack) == 0
+            else:
+                stack.append(s[i])
+        if len(stack) > 0:
+            return False
+        return True
+        
