@@ -9,7 +9,5 @@ class Solution:
                     return False
             else:
                 stack.append(s[i])
-        if len(stack) > 0:
-            return False
-        return True
+        return len(stack) == 0
         
