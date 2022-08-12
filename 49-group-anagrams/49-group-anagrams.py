@@ -1,3 +1,6 @@
+# Time Complexity   : O(N)
+# Space Complexity  : O(N)
+
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         ans = []
