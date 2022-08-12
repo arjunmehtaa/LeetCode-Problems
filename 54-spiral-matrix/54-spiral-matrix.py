@@ -9,7 +9,8 @@ class Solution:
         j = 0
         queue = []
         counter = 0
-        while True:
+        finished = False
+        while not finished:
             for direction in directions:
                 counter += 1
                 queue = [[i, j]]
@@ -22,8 +23,9 @@ class Solution:
                     if not seen[row][col]:
                         ans.append(matrix[row][col])
                         if len(ans) == size:
-                            return ans
+                            finished = True
                         seen[row][col] = True
                         i = row
                         j = col
                     queue.append([row + direction[0], col + direction[1]])
+        return ans
