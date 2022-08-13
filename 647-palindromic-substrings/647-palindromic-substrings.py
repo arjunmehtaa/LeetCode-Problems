@@ -2,7 +2,7 @@ class Solution:
     def countSubstrings(self, s: str) -> int:
         count = 0
         dp = {}
-        for i in range(0, len(s)):
+        for i in range(len(s)-1, -1, -1):
             for j in range(i, len(s)):
                 string = s[i:j+1]
                 if isPalindrome(s, i, j, dp):
