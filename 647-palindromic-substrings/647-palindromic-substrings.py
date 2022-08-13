@@ -13,6 +13,7 @@ def isPalindrome(s, i, j, dp):
     if (i, j) in dp:
         return dp[(i, j)]
     if i >= j:
+        dp[(i, j)] = True
         return True
     if s[i] == s[j]:
         dp[(i, j)] = isPalindrome(s, i+1, j-1, dp)
