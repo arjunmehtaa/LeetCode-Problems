@@ -8,16 +8,11 @@ class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         return traverse(root, -inf, inf)
         
-def traverse(node, left, right):
-    if node.val <= left or node.val >= right:
+def traverse(root, left, right):
+    if not root:
+        return True
+    if root.val <= left or root.val >= right:
         return False
-    l = True
-    r = True
-    if node.left:
-        l = traverse(node.left, left, node.val)
-    if node.right:
-        r = traverse(node.right, node.val, right)
-    if not l or not r:
-        return False
-    return True
-    
+    left = traverse(root.left, left, root.val)
+    right = traverse(root.right, root.val, right)
+    return left and right
