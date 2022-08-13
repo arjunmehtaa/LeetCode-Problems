@@ -11,9 +11,9 @@ class Solution:
         maximum = max(p.val, q.val)
         if root.val <= maximum and root.val >= minimum:
             return root
-        elif root.val >= maximum:
+        elif root.val > maximum:
             return self.lowestCommonAncestor(root.left, p, q)
-        elif root.val <= minimum:
+        elif root.val < minimum:
             return self.lowestCommonAncestor(root.right, p, q)
         
         
