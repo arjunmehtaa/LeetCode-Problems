@@ -19,23 +19,3 @@ class Solution:
                     while nums[l] == nums[l-1] and l < r:
                         l += 1
         return ans
-        
-        
-        
-        
-        # map = {}
-        # ans = []
-        # for i in range(0 ,len(nums)):
-        #     sum_to_find = 0 - nums[i]
-        #     map[sum_to_find] = i
-        # for i in range(0 ,len(nums)):
-        #     for j in range(0 ,len(nums)):
-        #         sub = nums[i] + nums[j]
-        #         if i != j and sub in map and map[sub] != i and map[sub] != j:
-        #             arr = [-sub, nums[i], nums[j]]
-        #             arr.sort()
-        #             if arr not in ans:
-        #                 ans.append(arr)
-        # return ans
-    
-        
