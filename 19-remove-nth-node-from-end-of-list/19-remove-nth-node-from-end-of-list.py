@@ -15,11 +15,13 @@ class Solution:
         start = head
         prev = start
         while current.next:
-            count += 1
             current = current.next
             prev = start
             start = start.next
+            count += 1
         prev.next = start.next
         if count == n:
             return head.next
         return head
+        
+        
