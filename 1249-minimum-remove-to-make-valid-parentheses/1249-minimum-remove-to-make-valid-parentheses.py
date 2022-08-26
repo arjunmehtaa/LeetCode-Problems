@@ -1,14 +1,11 @@
-# Time Complexity   : O(N)
-# Space Complexity  : O(N)
-
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
-        i = 0
         stack = []
+        i = 0
         while i < len(s):
-            if s[i] == '(':
+            if s[i] == "(":
                 stack.append(i)
-            elif s[i] == ')':
+            if s[i] == ")":
                 if len(stack) > 0:
                     stack.pop()
                 else:
@@ -19,3 +16,5 @@ class Solution:
             pos = stack.pop()
             s = s[:pos] + s[pos+1:]
         return s
+                
+                
