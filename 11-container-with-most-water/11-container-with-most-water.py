@@ -3,7 +3,7 @@ class Solution:
         answer = 0
         a = 0
         b = len(height) - 1
-        while(a!=b):     
+        while a < b:     
             area = min(height[a], height[b])*(b-a)
             answer = max(answer, area)
             if height[a] < height[b]:
