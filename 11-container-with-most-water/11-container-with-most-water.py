@@ -4,7 +4,7 @@ class Solution:
         a = 0
         b = len(height) - 1
         while a < b:     
-            area = min(height[a], height[b])*(b-a)
+            area = min(height[a], height[b]) * (b - a)
             answer = max(answer, area)
             if height[a] < height[b]:
                 a += 1
