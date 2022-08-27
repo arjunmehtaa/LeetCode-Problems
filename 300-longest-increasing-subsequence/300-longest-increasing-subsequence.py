@@ -6,4 +6,3 @@ class Solution:
                 if nums[i] < nums[j]:
                     lis[i] = max(lis[i], 1 + lis[j])
         return max(lis)
-        
