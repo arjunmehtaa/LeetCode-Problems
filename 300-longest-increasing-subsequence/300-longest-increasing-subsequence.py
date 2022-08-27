@@ -1,3 +1,6 @@
+# Time Complexity	: O(N^2)
+# Space Complexity	: O(1)
+
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
         lis = [1] * len(nums)
