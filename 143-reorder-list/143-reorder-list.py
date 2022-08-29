@@ -38,11 +38,3 @@ class Solution:
             head2 = next
         return head
     
-    
-    
-    
-    
-    
-    
-    
-    
