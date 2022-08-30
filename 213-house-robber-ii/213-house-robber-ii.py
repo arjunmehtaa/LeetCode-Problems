@@ -3,7 +3,7 @@
 
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        return max(nums[0], helper(nums[1:]), helper(nums[:-1]))
+        return max(nums[0], helper(nums[1:]), helper(nums[:len(nums)-1]))
     
 def helper(nums):
     rob1 = 0
