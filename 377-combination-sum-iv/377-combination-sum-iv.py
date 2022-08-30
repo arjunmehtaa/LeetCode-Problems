@@ -13,10 +13,10 @@ def dfs(nums, num, ans, target, memo):
         return 1
     elif ans > target:
         return 0
-    if (num, ans) not in memo:
+    if ans not in memo:
         count = 0
         for n in nums:
             count += dfs(nums, n, ans, target, memo)
-        memo[(num, ans)] = count
-    return memo[(num, ans)]
+        memo[ans] = count
+    return memo[ans]
         
