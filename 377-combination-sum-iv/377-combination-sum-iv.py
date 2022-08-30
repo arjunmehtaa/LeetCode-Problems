@@ -1,3 +1,9 @@
+# Bottom-up Dynamic Solution
+#
+# Let N be the target value and M be the size of nums array
+# Time Complexity	: O(N*M)
+# Space Complexity	: O(N)
+
 class Solution:
     def combinationSum4(self, nums: List[int], target: int) -> int:
         dp = {0 : 1}
