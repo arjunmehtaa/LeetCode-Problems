@@ -1,3 +1,7 @@
+# Let heights be an M x N matrix
+# Time Complexity	: O(M x N)
+# Space Complexity	: O(M x N)
+
 directions = [[-1,0], [1,0], [0,-1], [0,1]]
 
 class Solution:
