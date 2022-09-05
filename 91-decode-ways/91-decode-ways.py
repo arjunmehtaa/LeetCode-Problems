@@ -13,14 +13,11 @@ def dfs(s, i, memo):
     if i not in memo:
         value1 = int(s[:1])
         value2 = int(s[:2])
+        one, two = 0, 0
         if value1 >= 1:
             one = dfs(s[1:], i + 1, memo)
-        else:
-            one = 0
         if value2 <= 26:
             two = dfs(s[2:], i + 2, memo)
-        else:
-            two = 0
         memo[i] = one + two
     return memo[i]
         
