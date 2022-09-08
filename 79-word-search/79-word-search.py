@@ -1,31 +1,28 @@
+directions = [[-1,0], [1,0], [0,-1], [0,1]]
+
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
-        nrows = len(board)
-        ncols = len(board[0])
+        rows = len(board)
+        cols = len(board[0])
+        path = set()
         
-        def backtrack(i, j, idx):
-            char = board[i][j]
-            if char != word[idx]:
+        def dfs(r, c, i):
+            if i == len(word):
+                return True
+            if r < 0 or c < 0 or r >= rows or c >= cols or word[i] != board[r][c] or (r, c) in path:
                 return False
-            elif idx == len(word)-1:
-                return True
-            
-            board[i][j] = ''
-            
-            if i > 0 and backtrack(i-1, j, idx+1):
-                return True
-            if j > 0 and backtrack(i, j-1, idx+1):
-                return True
-            if i < nrows-1 and backtrack(i+1, j, idx+1):
-                return True
-            if j < ncols-1 and backtrack(i, j+1, idx+1):
-                return True            
-            board[i][j] = char
-            return False
-                    
-        for i in range(nrows):
-            for j in range(ncols):
-                if backtrack(i, j, 0):
+            path.add((r, c))
+            for direction in directions:
+                next_row = r + direction[0]
+                next_col = c + direction[1]
+                if dfs(next_row, next_col, i + 1):
                     return True
+            path.remove((r, c))
+            return False
             
+        for r in range(rows):
+            for c in range(cols):
+                if dfs(r, c, 0):
+                    return True
+                
         return False
