@@ -6,9 +6,7 @@ class Solution:
         
         for i in range(len(matrix)):
             for j in range(i, len(matrix[0])):
-                temp = matrix[i][j]
-                matrix[i][j] = matrix[j][i]
-                matrix[j][i] = temp
+                matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
                 
         for row in matrix:
             row.reverse()
