@@ -1,3 +1,7 @@
+# Optimal Solution
+# Time Complexity	: O(N^2)
+# Space Complexity	: O(1)
+
 class Solution:
     def rotate(self, matrix: List[List[int]]) -> None:
         """
@@ -7,15 +11,21 @@ class Solution:
         for i in range(len(matrix)):
             for j in range(i, len(matrix[0])):
                 matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
-                
+    
         for row in matrix:
             row.reverse()
-        
-        # stack = []
-        # for j in range(0, len(matrix[0])):
-        #     for i in range(len(matrix) - 1, -1, -1):
-        #         stack.append(matrix[i][j])
-        # for i in range(len(matrix)):
-        #     for j in range(len(matrix[0])):
-        #         matrix[i][j] = stack.pop(0)
+
+# Stack/Queue Solution
+# Time Complexity	: O(N^2)
+# Space Complexity	: O(N^2)
+
+# class Solution:
+#     def rotate(self, matrix: List[List[int]]) -> None:
+#         stack = []
+#         for j in range(0, len(matrix[0])):
+#             for i in range(len(matrix) - 1, -1, -1):
+#                 stack.append(matrix[i][j])
+#         for i in range(len(matrix)):
+#             for j in range(len(matrix[0])):
+#                 matrix[i][j] = stack.pop(0)
             
