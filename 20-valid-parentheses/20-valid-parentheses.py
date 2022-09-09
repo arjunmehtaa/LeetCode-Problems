@@ -1,14 +1,16 @@
-# Time Complexity   : O(N)
-# Space Complexity  : O(N)
-
 class Solution:
     def isValid(self, s: str) -> bool:
-        map = {']':'[', '}':'{', ')':'('}
+        bracketsMap = {
+            ")" : "(", 
+            "}" : "{", 
+            "]" : "["
+        }
         stack = []
         for char in s:
-            if char in map.values():
-                stack.append(char)
-            else:
-                if len(stack) == 0 or stack.pop() != map[char]:
+            if char in bracketsMap:
+                if len(stack) == 0 or stack.pop() != bracketsMap[char]:
                     return False
+            else:
+                stack.append(char)
         return len(stack) == 0
+        
