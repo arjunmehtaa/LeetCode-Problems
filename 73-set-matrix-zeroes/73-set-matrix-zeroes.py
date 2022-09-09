@@ -1,29 +1,28 @@
-directions = [[-1,0], [0,-1], [0,1], [1,0]]
+directions = [[-1, 0], [1, 0], [0, -1], [0, 1]]
 
 class Solution:
     def setZeroes(self, matrix: List[List[int]]) -> None:
         """
         Do not return anything, modify matrix in-place instead.
         """
-        ignore = set()
-        for i in range(0, len(matrix)):
-            for j in range(0, len(matrix[0])):
-                if matrix[i][j] == 0 and (i,j) not in ignore:
-                    traverse(i, j, matrix, ignore)
-                        
-def traverse(i, j, matrix, ignore):
-    for direction in directions:
-        row = i + direction[0]
-        col = j + direction[1]
-        queue = [[row, col]]
+        totalRows = len(matrix)
+        totalCols = len(matrix[0])
+        queue = []
+        
+        for i in range(totalRows):
+            for j in range(totalCols):
+                if matrix[i][j] == 0:
+                    queue.append([i, j])
+                    
         while len(queue) > 0:
             element = queue.pop(0)
-            next_row = element[0]
-            next_col = element[1]
-            if next_row < 0 or next_col < 0 or next_row >= len(matrix) or next_col >= len(matrix[0]):
-                continue
-            if matrix[next_row][next_col] != 0:
-                matrix[next_row][next_col] = 0
-                ignore.add((next_row, next_col))
-            queue.append([next_row + direction[0], next_col + direction[1]])
+            r, c = element[0], element[1]
+            for direction in directions:
+                nextRow = r + direction[0]
+                nextCol = c + direction[1]
+                while nextRow >= 0 and nextCol >= 0 and nextRow < totalRows and nextCol < totalCols:
+                    matrix[nextRow][nextCol] = 0
+                    nextRow += direction[0]
+                    nextCol += direction[1]
         
+        return matrix
