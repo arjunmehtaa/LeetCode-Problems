@@ -8,15 +8,18 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
-        # find middle
+        if not head:
+            return None
+        
+        # Find the middle
         slow = head
         fast = head
         while fast.next and fast.next.next:
             slow = slow.next
             fast = fast.next.next
-            
-        # reverse 2nd half
         current = slow.next
+        
+        # Reverse second half
         prev = None
         while current:
             next = current.next
@@ -25,23 +28,13 @@ class Solution:
             current = next
         slow.next = None
         
-        # merge the two lists
+        # Merge the two lists
         head1 = head
         head2 = prev
-        final = ListNode()
-        start = final
-        while head1 and head2:
-            final.next = head1
-            head1 = head1.next
-            final = final.next
-            final.next = head2
-            head2 = head2.next
-            final = final.next
-        final.next = head1 or head2
-        
-        return start.next
-            
-        
-        
-            
-        
+        while head2:
+            next = head1.next
+            head1.next = head2
+            head1 = head2
+            head2 = next
+        return head
+    
