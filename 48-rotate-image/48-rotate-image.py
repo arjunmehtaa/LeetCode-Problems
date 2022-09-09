@@ -1,31 +1,15 @@
-# Optimal Solution
-# Time Complexity	: O(N^2)
-# Space Complexity	: O(1)
-
 class Solution:
     def rotate(self, matrix: List[List[int]]) -> None:
         """
         Do not return anything, modify matrix in-place instead.
         """
-        
-        for i in range(len(matrix)):
-            for j in range(i, len(matrix[0])):
-                matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
-    
-        for row in matrix:
-            row.reverse()
-
-# Stack/Queue Solution
-# Time Complexity	: O(N^2)
-# Space Complexity	: O(N^2)
-
-# class Solution:
-#     def rotate(self, matrix: List[List[int]]) -> None:
-#         stack = []
-#         for j in range(0, len(matrix[0])):
-#             for i in range(len(matrix) - 1, -1, -1):
-#                 stack.append(matrix[i][j])
-#         for i in range(len(matrix)):
-#             for j in range(len(matrix[0])):
-#                 matrix[i][j] = stack.pop(0)
+        rows = len(matrix)
+        cols = len(matrix[0])
+        for r in range(rows):
+            for c in range(r, cols):
+                matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
+                
+        for r in range(rows):
+            matrix[r].reverse()
             
+        return matrix
