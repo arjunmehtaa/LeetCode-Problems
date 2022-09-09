@@ -1,17 +1,12 @@
-# Time Complexity   : O(N)
-# Space Complexity  : O(N)
-
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        ans = []
-        map = {}
-        for i in range(0, len(strs)):
-            s = strs[i]
-            s = ''.join(sorted(s))
-            if s in map:
-                map[s].append(strs[i])
+        anagramMap = {}
+        for word in strs:
+            sortedWord = "".join(sorted(word))
+            if sortedWord in anagramMap:
+                anagramMap[sortedWord].append(word)
             else:
-                map[s] = [strs[i]]
-        for key in map:
-            ans.append(map[key])
-        return ans
+                anagramMap[sortedWord] = [word]
+        return anagramMap.values()
+            
+        
