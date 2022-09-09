@@ -1,25 +1,13 @@
 class Solution:
     def countSubstrings(self, s: str) -> int:
-        dp = {}
-        n = len(s)
-        count = 0
-        for i in range(0, len(s)):
-            dp[(i,i)] = True
-            count += 1
-        for i in range(0, len(s) - 1):
-            if s[i] == s[i+1]:
-                dp[(i, i+1)] = True
-                count += 1
-            else:
-                dp[(i, i+1)] = False
-        for k in range(3, n + 1):
-            for i in range(0, n - k + 1):
-                j = i + k - 1
-                if dp[(i+1, j-1)] and s[i] == s[j]:
-                    dp[i, j] = True
-                    count += 1
-                else:
-                    dp[i, j] = False
-        return count
-        
-        
+        answer = len(s)
+        offset = 1
+        while offset < len(s):
+            for a in range(len(s) - offset):
+                if isPalindrome(s[a: a + offset + 1]):
+                    answer += 1
+            offset += 1
+        return answer
+            
+def isPalindrome(s) -> bool:
+    return s == s[::-1]
