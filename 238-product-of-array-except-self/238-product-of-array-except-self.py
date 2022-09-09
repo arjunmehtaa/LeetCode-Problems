@@ -4,11 +4,9 @@ class Solution:
         pre = 1
         post = 1
         for i in range(0, len(nums)):
-            temp = nums[i]
             ans[i] = pre
-            pre *= temp
+            pre *= nums[i]
         for i in range(len(nums) - 1, -1, -1):
-            temp = nums[i]
             ans[i] *= post
-            post *= temp
+            post *= nums[i]
         return ans
