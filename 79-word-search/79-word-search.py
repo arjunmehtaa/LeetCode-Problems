@@ -1,3 +1,6 @@
+# Time Complexity	: O(N * M * 4^LEN(WORD))
+# Space Complexity	: O()                       NOT SURE
+
 directions = [[-1, 0], [1, 0], [0, -1], [0, 1]]
 
 class Solution:
