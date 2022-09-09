@@ -1,9 +1,9 @@
 class Solution:
-    def characterReplacement(self, s: str, k: int) -> int:       
-        seen = {}
+    def characterReplacement(self, s: str, k: int) -> int:
         answer = 0
-        a = 0
         maxCount = 0
+        a = 0
+        seen = {}
         for b in range(len(s)):
             if s[b] in seen:
                 seen[s[b]] += 1
