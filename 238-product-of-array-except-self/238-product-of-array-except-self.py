@@ -7,7 +7,6 @@ class Solution:
             temp = nums[i]
             ans[i] = pre
             pre *= temp
-        print(ans)
         for i in range(len(nums) - 1, -1, -1):
             temp = nums[i]
             ans[i] *= post
