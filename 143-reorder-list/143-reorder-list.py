@@ -8,33 +8,30 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
-        if not head:
-            return None
-        
-        # Find the middle
         slow = head
         fast = head
         while fast.next and fast.next.next:
             slow = slow.next
             fast = fast.next.next
+            
+        # reverse second half
         current = slow.next
-        
-        # Reverse second half
-        prev = None
+        rev = None
         while current:
             next = current.next
-            current.next = prev
-            prev = current
+            current.next = rev
+            rev = current
             current = next
         slow.next = None
-        
-        # Merge the two lists
+            
+        # merge
         head1 = head
-        head2 = prev
+        head2 = rev
         while head2:
             next = head1.next
             head1.next = head2
             head1 = head2
             head2 = next
         return head
-    
+        
+        
