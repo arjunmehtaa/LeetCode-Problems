@@ -9,9 +9,9 @@ class Solution:
         return traverse(p, q)
         
 def traverse(p, q):
-    if p == None and q == None:
+    if not p and not q:
         return True
-    elif p == None or q == None:
+    elif not p or not q:
         return False
     if p.val != q.val:
         return False
