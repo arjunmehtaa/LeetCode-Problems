@@ -13,9 +13,6 @@ class Solution:
 def traverse(node):
     if node == None:
         return 1
-    left, right = 0, 0
-    if node.left:
-        left = traverse(node.left)
-    if node.right:
-        right = traverse(node.right)
+    left = traverse(node.left) if node.left else 0
+    right = traverse(node.right) if node.right else 0
     return 1 + max(left, right)
