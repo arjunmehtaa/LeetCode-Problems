@@ -1,11 +1,11 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
-        one = 2
-        two = 1
-        if n <= 1:
-            return n
-        for i in range(n - 3,-1, -1):
-            temp = one
-            one = one + two
-            two = temp
-        return one
+        memo= {}
+        return dfs(n, memo)
+    
+def dfs(n, memo):
+    if n <= 2:
+        return n
+    if n not in memo:
+        memo[n] = dfs(n-1, memo) + dfs(n-2, memo)
+    return memo[n]
