@@ -11,22 +11,22 @@ class Solution:
         queue = [root]
         while len(queue) > 0:
             node = queue.pop(0)
-            if node.val == subRoot.val:
-                if isSame(node, subRoot):
-                    return True
+            if areTreesIdentical(node, subRoot):
+                return True
             if node.left:
                 queue.append(node.left)
             if node.right:
                 queue.append(node.right)
         return False
         
-def isSame(p, q):
-    if not p and not q:
+        
+def areTreesIdentical(root, subRoot):
+    if not root and not subRoot:
         return True
-    elif not p or not q:
+    if not root or not subRoot:
         return False
-    else:
-        if p.val == q.val:
-            return isSame(p.left, q.left) and isSame(p.right, q.right)
-        else:
-            return False
+    if root.val != subRoot.val:
+        return False
+    if not areTreesIdentical(root.left, subRoot.left) or not areTreesIdentical(root.right, subRoot.right):
+        return False
+    return True
