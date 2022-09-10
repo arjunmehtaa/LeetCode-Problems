@@ -7,8 +7,7 @@ class Solution:
             for coin in coins:
                 if i - coin >= 0:
                     dp[i] = min(dp[i], 1 + dp[i - coin])
-        return dp[amount] if dp[amount] != amount + 1 else -1 
-        
+        return dp[amount] if dp[amount] != amount + 1 else -1      
         
 # Top - Down Memoization
 # class Solution:
