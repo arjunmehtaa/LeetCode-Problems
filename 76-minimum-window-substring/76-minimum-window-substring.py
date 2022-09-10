@@ -1,3 +1,8 @@
+# Let N be size of s and M be size of T
+
+# Time Complexity	: O(N)
+# Space Complexity	: O(N + M)
+
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
         if t == "": 
