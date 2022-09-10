@@ -1,6 +1,8 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        return max(nums[0], robHouse(nums[1:]), robHouse(nums[:len(nums) - 1]))
+        if len(nums) == 1:
+            return nums[0]
+        return max(robHouse(nums[1:]), robHouse(nums[:len(nums) - 1]))
         
 def robHouse(nums):
     rob1 = 0 
