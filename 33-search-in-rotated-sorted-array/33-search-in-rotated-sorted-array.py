@@ -17,4 +17,5 @@ class Solution:
                 else:
                     left = mid + 1
         return -1
-            
+        
+        # 5 6 0 1 2 3 4     target = 0
