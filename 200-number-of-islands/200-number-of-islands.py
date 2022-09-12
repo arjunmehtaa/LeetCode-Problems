@@ -1,25 +1,32 @@
-directions = [[-1,0], [1,0], [0,-1], [0,1]]
+# Time Complexity   : O(M X N) 		(It is O(2N) because even though we might end up traversing through 
+#					                the entire grid, we would never encounter that island again)
+# Space Complexity  : O(max(M, N))	(where matrix is N X M)
+
+directions = [[-1,0], [0,1], [1,0], [0,-1]]
 
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        rows = len(grid)
-        cols = len(grid[0])
+        if len(grid) == 0:
+            return False
         islands = 0
-        for i in range(rows):
-            for j in range(cols):
+        for i in range(0, len(grid)):
+            for j in range(0, len(grid[0])):
                 if grid[i][j] == "1":
-                    grid[i][j] = "0"
                     islands += 1
-                    queue = [[i, j]]
+                    grid[i][j] = "0"
+                    queue = [[i,j]]
                     while len(queue) > 0:
                         pos = queue.pop(0)
-                        row, col = pos[0], pos[1]
-                        for direction in directions:
-                            nextRow = row + direction[0]
-                            nextCol = col + direction[1]
-                            if nextRow < 0 or nextCol < 0 or nextRow >= rows or nextCol >= cols:
+                        row = pos[0]
+                        col = pos[1]
+                        for k in range(0, len(directions)):
+                            current_dir = directions[k]
+                            next_row = row + current_dir[0]
+                            next_col = col + current_dir[1]
+                            if next_row < 0 or next_col < 0 or next_row >= len(grid) or next_col >= len(grid[0]):
                                 continue
-                            if grid[nextRow][nextCol] == "1":
-                                grid[nextRow][nextCol] = "0"
-                                queue.append([nextRow, nextCol])
-        return islands
+                            if grid[next_row][next_col] == "1":
+                                queue.append([next_row, next_col])
+                                grid[next_row][next_col] = "0"
+        return islands                     
+    
