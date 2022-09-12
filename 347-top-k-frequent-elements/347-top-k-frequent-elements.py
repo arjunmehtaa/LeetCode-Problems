@@ -7,7 +7,6 @@ class Solution:
             countMap[num] = countMap.get(num, 0) + 1
         for key in countMap:
             freqs[countMap[key]].append(key)
-        print(freqs)
         for i in range(len(freqs) - 1, -1, -1):
             if len(freqs[i]) > 0:
                 answer.extend(freqs[i])
