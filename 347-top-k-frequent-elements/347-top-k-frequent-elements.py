@@ -1,3 +1,6 @@
+# Time Complexity	: O(N)
+# Space Complexity	: O(N)
+
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         countMap = {}
