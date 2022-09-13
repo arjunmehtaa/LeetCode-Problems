@@ -1,6 +1,3 @@
-# Time Complexity	: O(LOG(N))
-# Space Complexity	: O(1)
-
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
         left = 0
@@ -20,7 +17,3 @@ class Solution:
                 else:
                     left = mid + 1
         return -1
-    
-                
-                
-        
