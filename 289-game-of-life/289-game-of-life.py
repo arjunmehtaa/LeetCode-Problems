@@ -7,7 +7,6 @@ class Solution:
         """
         rows = len(board)
         cols = len(board[0])
-        result = [[None] * cols for _ in range(rows)]
         for i in range(rows):
             for j in range(cols):
                 count = 0 
