@@ -1,3 +1,6 @@
+# Time Complexity   : O(N)
+# Space Complexity  : O(N)
+
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         # return length of longest substring, given s
