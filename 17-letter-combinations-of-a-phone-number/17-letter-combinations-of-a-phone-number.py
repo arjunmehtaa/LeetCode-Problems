@@ -20,6 +20,6 @@ class Solution:
                 pre = answer.pop()
                 for char in s:
                     sub.append(pre + char)
-            answer.extend(sub)
+            answer = sub
         return answer 
         
