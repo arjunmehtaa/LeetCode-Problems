@@ -1,17 +1,13 @@
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-        answer = 0
-        maxCount = 0
-        a = 0
-        seen = {}
-        for b in range(len(s)):
-            if s[b] in seen:
-                seen[s[b]] += 1
-            else:
-                seen[s[b]] = 1
-            maxCount = max(maxCount, seen[s[b]])
-            while (b - a - maxCount + 1) > k:
-                seen[s[a]] -= 1
-                a += 1
-            answer = max(answer, b - a + 1)
-        return answer
+        count = {}
+        res = 0
+        l = 0
+        for r in range(len(s)):
+            count[s[r]] = count.get(s[r], 0) + 1
+            while (r - l + 1) - max(count.values()) > k:
+                count[s[l]] -= 1
+                l += 1
+            res = max(res, r - l + 1)
+        return res
+            
