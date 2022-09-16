@@ -11,5 +11,3 @@ class Solution:
                 prevEnd = min(prevEnd, intervals[i][1])
         return res
         
-        
-        
