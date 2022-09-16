@@ -3,6 +3,6 @@ class Solution:
         maxSum = nums[0]
         currSum = 0
         for num in nums:
-            currSum = max(currSum + num, num)
+            currSum = max(num, currSum + num)
             maxSum = max(maxSum, currSum)
         return maxSum
