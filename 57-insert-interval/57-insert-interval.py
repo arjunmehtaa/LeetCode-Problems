@@ -1,6 +1,3 @@
-# Time Complexity	: O(N)
-# Space Complexity	: O(N)
-
 class Solution:
     def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
         ans = []
@@ -16,3 +13,4 @@ class Solution:
                 newInterval = [start, end]
         ans.append(newInterval)
         return ans
+                
