@@ -6,7 +6,7 @@
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
         final = ListNode()
-        start = final
+        head = final
         while list1 and list2:
             if list1.val < list2.val:
                 final.next = list1
@@ -15,8 +15,5 @@ class Solution:
                 final.next = list2
                 list2 = list2.next
             final = final.next
-        if list1:
-            final.next = list1
-        if list2:
-            final.next = list2
-        return start.next
+        final.next = list1 or list2
+        return head.next
