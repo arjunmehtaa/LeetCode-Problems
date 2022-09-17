@@ -1,18 +1,15 @@
-# Time Complexity	: O(N)
-# Space Complexity	: O(N)
-
 class Solution:
     def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
-        ans = []
+        answer = []
         for i in range(len(intervals)):
             if newInterval[1] < intervals[i][0]:
-                ans.append(newInterval)
-                return ans + intervals[i:]
+                answer.append(newInterval)
+                return answer + intervals[i:]
             elif newInterval[0] > intervals[i][1]:
-                ans.append(intervals[i])
+                answer.append(intervals[i])
             else:
-                newInterval = [min(newInterval[0], intervals[i][0]), max(newInterval[1], intervals[i][1])]
-        ans.append(newInterval) 
-        return ans
-            
-        
+                start = min(newInterval[0], intervals[i][0])
+                end = max(newInterval[1], intervals[i][1])
+                newInterval = [start, end]
+        answer.append(newInterval)
+        return answer
