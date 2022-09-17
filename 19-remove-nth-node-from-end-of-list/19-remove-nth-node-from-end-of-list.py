@@ -10,8 +10,8 @@ class Solution:
         current = head
         count = 1
         while count < n:
-            count += 1
             current = current.next
+            count += 1
         start = head
         prev = start
         while current.next:
@@ -19,8 +19,9 @@ class Solution:
             prev = start
             start = start.next
             count += 1
+        prev.next = start.next
         if count == n:
             return head.next
-        prev.next = start.next
-        start.next = None
         return head
+        
+        
