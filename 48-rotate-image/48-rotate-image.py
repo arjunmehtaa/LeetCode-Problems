@@ -8,7 +8,8 @@ class Solution:
         for i in range(rows):
             for j in range(i, cols):
                 matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+                
         for row in matrix:
             row.reverse()
-        return matrix
+            
         
