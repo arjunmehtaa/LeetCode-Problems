@@ -1,7 +1,3 @@
-# K is the number of sorted lists
-# Time Complexity	: O(N*LOG(K))
-# Space Complexity	: O(1)             NOT SURE
-
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
@@ -19,7 +15,8 @@ class Solution:
                 mergedLists.append(merge(l1, l2))
             lists = mergedLists
         return lists[0]
-                                
+            
+        
 def merge(l1, l2):
     final = ListNode()
     head = final
@@ -31,13 +28,5 @@ def merge(l1, l2):
             final.next = l2
             l2 = l2.next
         final = final.next
-    if l1:
-        final.next = l1
-    if l2:
-        final.next = l2
+    final.next = l1 or l2
     return head.next
-                                   
-                        
-                                   
-                                   
-        
