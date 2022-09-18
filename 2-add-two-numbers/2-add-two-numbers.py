@@ -9,16 +9,13 @@ class Solution:
         final = ListNode()
         head = final
         while l1 or l2:
-            if l1 and l2:
-                sum = l1.val + l2.val + carry
+            val1 = l1.val if l1 else 0
+            val2 = l2.val if l2 else 0
+            sum = val1 + val2 + carry
+            if l1: 
                 l1 = l1.next
+            if l2:
                 l2 = l2.next
-            elif not l1:
-                sum = l2.val + carry
-                l2 = l2.next
-            else:
-                sum = l1.val + carry
-                l1 = l1.next
             carry = 0
             if sum > 9:
                 sumStr = str(sum)
