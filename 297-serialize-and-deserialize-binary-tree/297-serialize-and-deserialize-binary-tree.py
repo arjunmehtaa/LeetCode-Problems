@@ -25,8 +25,8 @@ class Codec:
         
         dfs(root)
         return ",".join(res)
-    
-        
+            
+
     def deserialize(self, data):
         """Decodes your encoded data to tree.
         
@@ -37,6 +37,8 @@ class Codec:
         vals = data.split(",")
         
         def dfs():
+            if self.i >= len(vals):
+                return None
             if vals[self.i] == "N":
                 self.i += 1
                 return None
@@ -46,8 +48,9 @@ class Codec:
             node.right = dfs()
             return node
         
-        return dfs()
-     
+        root = dfs()
+        return root
+        
 
 # Your Codec object will be instantiated and called as such:
 # ser = Codec()
