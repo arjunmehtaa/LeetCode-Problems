@@ -9,10 +9,10 @@ class Solution:
         if not head or not head.next:
             return False
         a = head
-        b = head.next
+        b = head
         while b.next and b.next.next:
-            if a == b:
-                return True
             a = a.next
             b = b.next.next
+            if a == b:
+                return True
         return False
