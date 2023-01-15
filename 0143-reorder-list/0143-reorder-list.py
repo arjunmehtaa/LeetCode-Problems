@@ -13,27 +13,28 @@ class Solution:
         while fast.next and fast.next.next:
             slow = slow.next
             fast = fast.next.next
-        start = slow.next
+        sec = slow.next
+        slow.next = None
         
         prev = None
-        while start:
-            next = start.next
-            start.next = prev
-            prev = start
-            start = next
-        slow.next = None
-            
-        current = head
-        final = ListNode()
-        p = final
-        while current and prev:
-            final.next = current
-            final = final.next
-            current = current.next
-            final.next = prev
-            final = final.next
-            prev = prev.next
-        final.next = current or prev
+        while sec:
+            next = sec.next
+            sec.next = prev
+            prev = sec
+            sec = next
         
-        return p.next
+        l1 = head
+        l2 = prev
+        final = ListNode()
+        ans = final
+        while l1 and l2:
+            final.next = l1
+            l1 = l1.next
+            final = final.next
+            final.next= l2
+            l2 = l2.next
+            final = final.next
+        final.next = l1 or l2
+        return ans.next
             
+        
