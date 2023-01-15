@@ -5,7 +5,7 @@ class Solution:
         currMax = 1
         for n in nums:
             temp = n * currMax
-            currMax = max(n * currMin, n * currMax, n)
+            currMax = max(n * currMax, n * currMin, n)
             currMin = min(n * currMin, temp, n)
             ans = max(ans, currMax)
         return ans
