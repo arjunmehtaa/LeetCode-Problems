@@ -11,8 +11,7 @@ class Solution:
         maximum = max(p.val, q.val)
         if root.val >= minimum and root.val <= maximum:
             return root
-        elif root.val < minimum:
-            return self.lowestCommonAncestor(root.right, p, q)
         elif root.val > maximum:
             return self.lowestCommonAncestor(root.left, p, q)
-            
+        elif root.val < minimum:
+            return self.lowestCommonAncestor(root.right, p, q)
