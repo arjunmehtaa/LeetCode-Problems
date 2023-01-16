@@ -29,10 +29,9 @@ class WordDictionary:
                     if word[i] not in node.children:
                         return False
                     node = node.children[word[i]]
-            return node.isEnd
-        
+            return node.isEnd    
+                
         return dfs(self.root, 0)
-
 
 # Your WordDictionary object will be instantiated and called as such:
 # obj = WordDictionary()
