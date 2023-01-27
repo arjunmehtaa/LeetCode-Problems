@@ -1,8 +1,8 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        seen = {}
-        for i in range(len(nums)):
-            num_to_find = target - nums[i]
-            if num_to_find in seen:
-                return [i, seen[num_to_find]]
-            seen[nums[i]] = i
+        map = {}
+        for i in range(0, len(nums)):
+            toFind = target - nums[i]
+            if toFind in map:
+                return [map[toFind], i]
+            map[nums[i]] = i
