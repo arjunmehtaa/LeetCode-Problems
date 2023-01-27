@@ -1,31 +1,39 @@
+# Let heights be an M x N matrix
+# Time Complexity	: O(M x N)
+# Space Complexity	: O(M x N)
+
 directions = [[-1,0], [1,0], [0,-1], [0,1]]
 
 class Solution:
     def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
-        n, m = len(heights),  len(heights[0])
-        atl = set()
+        rows = len(heights)
+        cols = len(heights[0])
         pac = set()
-        ans = []
+        atl = set()
+        result = []
         
-        def dfs(r, c, data, last):
-            if r < 0 or c < 0 or r >= n or c >= m or (r, c) in data or heights[r][c] < last:
+        def dfs(r, c, visit, prevHeight):
+            if (r < 0 or c < 0 or r >= rows or c >= cols or (r,c) in visit or 
+                heights[r][c] < prevHeight):
                 return
-            data.add((r, c))
-            for d in directions:
-                dfs(r + d[0], c + d[1], data, heights[r][c])
+            visit.add((r, c))
+            for direction in directions:
+                next_row = r + direction[0]
+                next_col = c + direction[1]
+                dfs(next_row, next_col, visit, heights[r][c])
         
-        for i in range(0, n):
-            dfs(i, 0, pac, 0)
-            dfs(i, m - 1, atl, 0)
+        for c in range(cols):
+            dfs(0, c, pac, heights[0][c])
+            dfs(rows - 1, c, atl, heights[rows - 1][c])
             
-        for j in range(0, m):
-            dfs(0, j, pac, 0)
-            dfs(n - 1, j, atl, 0)
-                
-        for i in range(0, n):
-            for j in range(0, m):
-                if (i, j) in atl and (i, j) in pac:
-                    ans.append([i, j])
-                    
-        return ans
+        for r in range(rows):
+            dfs(r, 0, pac, heights[r][0])
+            dfs(r, cols - 1, atl, heights[r][cols - 1])
+            
+        for r in range(rows):
+            for c in range(cols):
+                if (r,c) in pac and (r,c) in atl:
+                    result.append([r, c])
+        
+        return result
         
