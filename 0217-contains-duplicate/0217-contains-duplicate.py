@@ -6,3 +6,5 @@ class Solution:
                 return True
             seen.add(num)
         return False
+        
+        
