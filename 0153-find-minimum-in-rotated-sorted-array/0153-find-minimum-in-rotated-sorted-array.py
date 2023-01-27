@@ -9,4 +9,5 @@ class Solution:
             else:
                 r = mid
         return nums[l]
+                
         
