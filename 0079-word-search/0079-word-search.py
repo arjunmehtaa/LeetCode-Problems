@@ -2,29 +2,27 @@ directions = [[-1, 0], [1, 0], [0, -1], [0, 1]]
 
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
-        self.found = False
+        n = len(board)
+        m = len(board[0])
         
-        def traverse(i, j, index):
-            if index == len(word):
-                self.found = True
-                return
-            
-            if (i < 0 or j < 0 or i >= len(board) or j >= len(board[0]) 
-                or board[i][j] != word[index]):
-                return 
-            
-            savedChar = board[i][j]
-            board[i][j] = ""
-            for dir in directions:
-                traverse(i + dir[0], j + dir[1], index + 1)
-            board[i][j] = savedChar
+        def dfs(index, r, c):
+            if index >= len(word):
+                return True
+            if r < 0 or c < 0 or r >= n or c >= m or board[r][c] != word[index]:
+                return False
+            char = board[r][c]
+            board[r][c] = ""
+            ans = False
+            for d in directions:
+                if dfs(index + 1, r + d[0], c + d[1]):
+                    ans = True
+                    break
+            board[r][c] = char
+            return ans
         
-        for i in range(len(board)):
-            for j in range(len(board[0])):
-                if board[i][j] == word[0]:
-                    traverse(i, j, 0)
-
-        return self.found
-                
+        for i in range(n):
+            for j in range(m):
+                if dfs(0, i, j):
+                    return True
         
-            
+        return False
