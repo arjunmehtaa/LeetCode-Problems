@@ -8,35 +8,40 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
-        if not head:
-            return None
-        
-        # Find the middle
+        # split list in 2
         slow = head
         fast = head
         while fast.next and fast.next.next:
             slow = slow.next
             fast = fast.next.next
-        current = slow.next
+        start = slow.next
+        slow.next = None
         
-        # Reverse second half
+        # reverse 2nd list
         prev = None
+        current = start
         while current:
             next = current.next
             current.next = prev
             prev = current
             current = next
-        slow.next = None
         
-        # Merge the two lists
+        # merge lists
         head1 = head
         head2 = prev
-        while head2:
-            temp1 = head1.next
-            temp2 = head2.next
-            head1.next = head2
-            head2.next = temp1
-            head1 = temp1
-            head2 = temp2
-        return head
-    
+        ans = ListNode()
+        ref = ans
+        while head1 and head2:
+            ans.next = head1
+            head1 = head1.next
+            ans = ans.next
+            ans.next = head2
+            head2 = head2.next
+            ans = ans.next
+        ans.next = head1 or head2
+        
+        return ans.next
+        
+        
+        
+        
