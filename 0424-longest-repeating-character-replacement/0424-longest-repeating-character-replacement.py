@@ -1,7 +1,7 @@
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-        ans = 0
         seen = {}
+        ans = 0
         i = 0
         for j in range(len(s)):
             seen[s[j]] = seen.get(s[j], 0) + 1
@@ -10,4 +10,3 @@ class Solution:
                 i += 1
             ans = max(ans, j - i + 1)
         return ans
-                    
