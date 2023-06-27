@@ -1,25 +1,29 @@
+# Time Complexity	: O(N^2)
+# Space Complexity	: O(1)
+
 class Solution:
     def longestPalindrome(self, s: str) -> str:
-        if len(s) <= 1:
-            return s
-        ans = ""
-        maxLen = 0
+        res = ""
+        resLen = 0
         for i in range(len(s)):
-            a = i
-            b = i
-            while a >= 0 and b < len(s) and s[a] == s[b]:
-                if b - a + 1 > maxLen:
-                    maxLen = b - a + 1
-                    ans = s[a:b+1]
-                a -= 1
-                b += 1
-        for i in range(len(s)):
-            a = i
-            b = i + 1
-            while a >= 0 and b < len(s) and s[a] == s[b]:
-                if b - a + 1 > maxLen:
-                    maxLen = b - a + 1
-                    ans = s[a:b+1]
-                a -= 1
-                b += 1
-        return ans
+            l = i
+            r = i
+            # odd length
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                if (r - l + 1) > resLen:
+                    res = s[l:r+1]
+                    resLen = r - l + 1
+                l -= 1
+                r += 1
+            # even length
+            l = i
+            r = i + 1
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                if (r - l + 1) > resLen:
+                    res = s[l:r+1]
+                    resLen = r - l + 1
+                l -= 1
+                r += 1
+        return res
+                    
+                
