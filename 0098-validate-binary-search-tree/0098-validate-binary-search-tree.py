@@ -4,19 +4,25 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+# Time Complexity   : O(N)
+# Space Complexity  : O(N)
+
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         if not root:
             return True
-        return traverse(-inf, inf, root)
-        
-def traverse(minVal, maxVal, node):
-    if node.val <= minVal or node.val >= maxVal:
+        return traverseTree(root, -inf, inf)
+
+def traverseTree(node, min, max):
+    if node.val <= min or node.val >= max:
         return False
     if node.left:
-        if not traverse(minVal, node.val, node.left):
+        if not traverseTree(node.left, min, node.val):
             return False
     if node.right:
-        if not traverse(node.val, maxVal, node.right):
+        if not traverseTree(node.right, node.val, max):
             return False
     return True
+        
+        
