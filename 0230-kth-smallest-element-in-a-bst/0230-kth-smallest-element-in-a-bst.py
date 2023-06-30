@@ -17,6 +17,9 @@ class Solution:
                 self.res = node.val
             if node.right:
                 traverse(self, node.right)
-                
+        
         traverse(self, root)
         return self.res
+    
+            
+        
