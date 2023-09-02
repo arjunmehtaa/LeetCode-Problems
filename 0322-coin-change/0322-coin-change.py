@@ -1,8 +1,6 @@
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
         dp = {}
-        for coin in coins:
-            dp[coin] = 1
         return traverse(amount, dp, coins)
             
 def traverse(amount, dp, coins):
