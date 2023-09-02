@@ -1,14 +1,25 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
         one = 1
-        two = 2
-        if n <= 1:
-            return n
-        for i in range(n - 3, -1, -1):
-            temp = two
-            two = two + one
-            one = temp
-        return two
-            
+        two = 1
+        for i in range(n-1):
+            temp = one
+            one = one + two
+            two = temp
+        return one
         
-# | 5 |    | 3 |   | 2 |   | 1 |
+# class Solution:
+#     def climbStairs(self, n: int) -> int:
+#         memo = {}
+        
+#         def traverse(index):
+#             if index == 0:
+#                 return 1
+#             if index < 0:
+#                 return 0
+#             if index not in memo:
+#                 memo[index] = traverse(index - 1) + traverse(index - 2)
+#             return memo[index]
+        
+#         return traverse(n)
+        
