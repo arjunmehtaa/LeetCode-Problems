@@ -4,10 +4,11 @@ class Solution:
         dp[len(s)] = True
         for i in range(len(s) - 1, -1, -1):
             for word in wordDict:
-                wordLen = len(word)
-                if (i + wordLen) <= len(s) and s[i:i + wordLen] == word and dp[i + wordLen]:
-                    dp[i] = True
+                if (i + len(word)) <= len(s) and s[i: i + len(word)] == word:
+                    dp[i] = dp[i + len(word)]
                 if dp[i]:
                     break
         return dp[0]
+        
+                    
         
