@@ -2,21 +2,18 @@ directions = [[1, 0], [0, 1]]
 
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        memo = {}
-        return dfs(0, 0, m, n, memo)
+        mem = {}
+        return dfs(0, 0, m, n, mem)
         
-def dfs(x, y, m, n, memo):
-    if x < 0 or y < 0 or x >= m or y >= n:
-        return 0
+def dfs(x, y, m, n, mem):
     if x == m - 1 and y == n - 1:
         return 1
-    if (x, y) not in memo:
-        res = 0
+    if x > m - 1 or y > n - 1:
+        return 0
+    if (x, y) not in mem:
+        count = 0
         for direction in directions:
-            row = x + direction[0]
-            col = y + direction[1]
-            res += dfs(row, col, m, n, memo)
-        memo[(x, y)] = res
-    return memo[(x, y)]
-        
+            count += dfs(x + direction[0], y + direction[1], m , n, mem)
+        mem[(x, y)] = count
+    return mem[(x, y)]
         
