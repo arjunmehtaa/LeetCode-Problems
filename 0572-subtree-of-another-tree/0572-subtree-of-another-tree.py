@@ -8,14 +8,13 @@ class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
         if not subRoot: return True
         if not root: return False
-        if isSameTree(root, subRoot):
+        if areEqual(root, subRoot):
             return True
         return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)
         
-        
-def isSameTree(p, q):
-    if not p and not q:
+def areEqual(r1, r2):
+    if not r1 and not r2:
         return True
-    if not p or not q or p.val != q.val:
+    if not r1 or not r2 or r1.val != r2.val:
         return False
-    return isSameTree(p.left, q.left) and isSameTree(p.right, q.right)
+    return areEqual(r1.left, r2.left) and areEqual(r1.right, r2.right)
