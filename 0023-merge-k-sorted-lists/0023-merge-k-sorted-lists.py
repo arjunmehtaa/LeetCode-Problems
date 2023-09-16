@@ -11,22 +11,22 @@ class Solution:
             mergedLists = []
             for i in range(0, len(lists), 2):
                 l1 = lists[i]
-                l2 = lists[i + 1] if i + 1 < len(lists) else None
-                mergedLists.append(mergeLists(l1, l2))
+                l2 = lists[i+1] if i + 1 < len(lists) else None
+                mergedLists.append(mergeTwoLists(l1, l2))
             lists = mergedLists
         return lists[0]
-                
         
-def mergeLists(l1, l2):
-    ans = ListNode()
-    ref = ans
+def mergeTwoLists(l1, l2):
+    final = ListNode()
+    current = final
     while l1 and l2:
         if l1.val < l2.val:
-            ref.next = l1
+            current.next = l1
             l1 = l1.next
         else:
-            ref.next = l2
+            current.next = l2
             l2 = l2.next
-        ref = ref.next
-    ref.next = l1 or l2
-    return ans.next
+        current = current.next
+    current.next = l1 or l2
+    return final.next
+        
