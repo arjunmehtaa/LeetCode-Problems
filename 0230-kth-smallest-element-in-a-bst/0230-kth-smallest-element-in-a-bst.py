@@ -6,17 +6,20 @@
 #         self.right = right
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
-        self.count = 0
-        self.ans = 0
+        self.k = k
+        self.res = None
         
-        def traverse(root):
-            if root.left:
-                traverse(root.left)
-            self.count += 1
-            if self.count == k:
-                self.ans = root.val
-            if root.right:
-                traverse(root.right)
-                
-        traverse(root)
-        return self.ans
+        def traverse(self, node):
+            if node.left:
+                traverse(self, node.left)
+            self.k -= 1
+            if self.k == 0:
+                self.res = node.val
+            if node.right:
+                traverse(self, node.right)
+        
+        traverse(self, root)
+        return self.res
+    
+            
+        
