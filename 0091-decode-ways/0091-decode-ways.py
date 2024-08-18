@@ -1,12 +1,13 @@
 class Solution:
     def numDecodings(self, s: str) -> int:
         memo = {}
+        memo[len(s)] = 1
         return traverse(s, 0, memo)
     
 def traverse(s, index, memo):
-    if index == len(s):
-        return 1
-    if index > len(s):
+    if index in memo:
+        return memo[index]
+    if s[index] == "0":
         return 0
     if index not in memo:
         res = 0
