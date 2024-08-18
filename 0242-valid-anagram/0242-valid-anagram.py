@@ -1,12 +1,14 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        charMap = {}
-        for char in s:
-            charMap[char] = charMap.get(char, 0) + 1
-        for char in t:
-            if char not in charMap:
+        seen = {}
+        if len(s) != len(t):
+            return False
+        for c in s:
+            seen[c] = seen.get(c, 0) + 1
+        for c in t:
+            if c not in seen:
                 return False
-            charMap[char] -= 1
-            if charMap[char] == 0:
-                del charMap[char]
-        return len(charMap) == 0
+            seen[c] -= 1
+            if seen[c] == 0:
+                del seen[c]
+        return len(seen) == 0
