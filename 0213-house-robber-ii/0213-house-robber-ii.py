@@ -1,14 +1,12 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        ans = nums[0]
-        ans = max(ans, help(nums[:-1]), help(nums[1:]))
-        return ans
+        return max(nums[0], stealMoney(nums[1:]), stealMoney(nums[:len(nums) - 1]))
         
-def help(nums):
-    one = 0
-    two = 0
-    for num in nums:
+def stealMoney(nums):
+    one, two = 0, 0
+    for i in range(len(nums) - 1, -1, -1):
         temp = one
-        one = two
-        two = max(temp + num, two)
-    return two
+        one = max(nums[i] + two, one)
+        two = temp
+    return one
+    
