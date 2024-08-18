@@ -1,21 +1,35 @@
 class Solution:
     def numDecodings(self, s: str) -> int:
-        memo = {}
-        return traverse(s, 0, memo)
+        dp = [0] * (len(s) + 1)
+        dp[len(s)] = 1
+        for i in range(len(s) - 1, -1, -1):
+            if s[i] == "0":
+                dp[i] = 0
+                continue
+            else:
+                dp[i] = dp[i + 1]
+            if i < len(s) - 1 and int(s[i:i+2]) <= 26:
+                dp[i] += dp[i + 2]
+        return dp[0]
+        
+        
+#     def numDecodings(self, s: str) -> int:
+#         memo = {}
+#         return traverse(s, 0, memo)
     
-def traverse(s, index, memo):
-    if index == len(s):
-        return 1
-    if index > len(s):
-        return 0
-    if index not in memo:
-        res = 0
-        if int(s[index]) != 0:
-            res += traverse(s, index + 1, memo)
-            if index < len(s) - 1 and int(s[index:index+2]) <= 26:
-                res += traverse(s, index + 2, memo)
-        memo[index] = res
-    return memo[index]
+# def traverse(s, index, memo):
+#     if index == len(s):
+#         return 1
+#     if index > len(s):
+#         return 0
+#     if index not in memo:
+#         res = 0
+#         if int(s[index]) != 0:
+#             res += traverse(s, index + 1, memo)
+#             if index < len(s) - 1 and int(s[index:index+2]) <= 26:
+#                 res += traverse(s, index + 2, memo)
+#         memo[index] = res
+#     return memo[index]
 
 # Time Complexity	: O(N)
 # Space Complexity	: O(N)
