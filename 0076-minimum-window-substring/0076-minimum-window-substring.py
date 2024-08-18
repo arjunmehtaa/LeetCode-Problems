@@ -1,24 +1,32 @@
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-        res = [-1, -1]
-        resLen = float("infinity")
-        tMap = {}
-        sMap = {}
-        for char in t:
-            tMap[char] = tMap.get(char, 0) + 1
-        a = 0
+        if t == "":
+            return ""
+        window = {}
+        countT = {}
+        ans = [-1, -1]
+        ansLen = inf
+        
+        for c in t:
+            countT[c] = countT.get(c, 0) + 1
+            
         have = 0
-        need = len(tMap)
-        for b in range(len(s)):
-            sMap[s[b]] = sMap.get(s[b], 0) + 1
-            if s[b] in tMap and sMap[s[b]] == tMap[s[b]]:
+        need = len(countT)
+        
+        l = 0
+        for r in range(len(s)):
+            c = s[r]
+            window[c] = window.get(c, 0) + 1
+            if c in countT and window[c] == countT[c]:
                 have += 1
-            while need == have:
-                if (b - a + 1) < resLen:
-                    resLen = b - a + 1
-                    res = [a, b]
-                sMap[s[a]] -= 1
-                if s[a] in tMap and sMap[s[a]] < tMap[s[a]]:
+            while have == need:
+                if r - l + 1 < ansLen:
+                    ansLen = r - l + 1
+                    ans = [l, r]
+                window[s[l]] -= 1
+                if s[l] in countT and window[s[l]] < countT[s[l]]:
                     have -= 1
-                a += 1
-        return s[res[0]:res[1] + 1] if resLen != float("infinity") else ""
+                l += 1
+           
+        return s[ans[0]: ans[1] + 1] if ansLen < inf else ""
+    
