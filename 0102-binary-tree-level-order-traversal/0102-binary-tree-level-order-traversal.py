@@ -3,28 +3,24 @@
 #     def __init__(self, val=0, left=None, right=None):
 #         self.val = val
 #         self.left = left
-#         self.right = right   
-
-# Time Complexity   : O(N)
-# Space Complexity  : O(N)
-
+#         self.right = right
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         if not root:
             return []
-        res = []
         queue = [root]
+        ans = []
         while len(queue):
-            size = len(queue)
-            count = 0
-            sub = []
-            while count < size:
+            count = len(queue)
+            subList = []
+            while count > 0:
+                count -= 1
                 node = queue.pop(0)
-                sub.append(node.val)
-                count += 1
-                if node.left: 
+                subList.append(node.val)
+                if node.left:
                     queue.append(node.left)
                 if node.right:
                     queue.append(node.right)
-            res.append(sub)
-        return res
+            ans.append(subList)
+        return ans
+                    
