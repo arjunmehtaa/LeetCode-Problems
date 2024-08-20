@@ -4,16 +4,10 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-
-# Time Complexity   : O(N)
-# Space Complexity  : O(N)
-
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-        if not root:
+        if root == None:
             return 0
-        left, right = 0, 0
         left = self.maxDepth(root.left)
         right = self.maxDepth(root.right)
-        return 1 + max(left, right)
-        
+        return max(left, right) + 1
