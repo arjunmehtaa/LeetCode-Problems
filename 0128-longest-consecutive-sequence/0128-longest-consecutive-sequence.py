@@ -1,11 +1,16 @@
+# Time Complexity	: O(N)
+# Space Complexity	: O(N)
+
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
-        ans = 0
         numSet = set(nums)
-        for num in numSet:
-            if num - 1 not in numSet:
+        longest = 0
+        
+        for n in nums:
+            if n - 1 not in numSet:
                 length = 0
-                while num + length in numSet:
+                while n + length in numSet:
                     length += 1
-                ans = max(ans, length)
-        return ans
+                longest = max(length, longest)
+                
+        return longest
