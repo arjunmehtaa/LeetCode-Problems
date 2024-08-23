@@ -1,11 +1,25 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
-        if n <= 2:
-            return n
-        last = 1
-        secondLast = 2
-        for i in range(n - 3, -1, -1):
-            temp = secondLast
-            secondLast += last
-            last = temp
-        return secondLast
+        one = 1
+        two = 1
+        for i in range(n-1):
+            temp = one
+            one = one + two
+            two = temp
+        return one
+        
+# class Solution:
+#     def climbStairs(self, n: int) -> int:
+#         memo = {}
+        
+#         def traverse(index):
+#             if index == 0:
+#                 return 1
+#             if index < 0:
+#                 return 0
+#             if index not in memo:
+#                 memo[index] = traverse(index - 1) + traverse(index - 2)
+#             return memo[index]
+        
+#         return traverse(n)
+        
