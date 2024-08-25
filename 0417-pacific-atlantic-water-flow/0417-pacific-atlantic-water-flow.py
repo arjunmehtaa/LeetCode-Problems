@@ -1,34 +1,27 @@
-# Let heights be an M x N matrix
-# Time Complexity	: O(M x N)
-# Space Complexity	: O(M x N)
-
-directions = [[-1,0], [1,0], [0,-1], [0,1]]
+directions = [[-1, 0], [1, 0], [0, -1], [0, 1]]
 
 class Solution:
     def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
-        rows = len(heights)
+        rows=  len(heights)
         cols = len(heights[0])
         pac = set()
         atl = set()
-        result = []
         
-        def dfs(r, c, visit, prevHeight):
-            if (r < 0 or c < 0 or r >= rows or c >= cols or (r,c) in visit or 
-                heights[r][c] < prevHeight):
-                return
-            visit.add((r, c))
-            for direction in directions:
-                next_row = r + direction[0]
-                next_col = c + direction[1]
-                dfs(next_row, next_col, visit, heights[r][c])
-        
-        for c in range(cols):
-            dfs(0, c, pac, heights[0][c])
-            dfs(rows - 1, c, atl, heights[rows - 1][c])
+        def dfs(i, j, visit):
+            visit.add((i, j))
+            for d in directions:
+                r = i + d[0]
+                c = j + d[1]
+                if r >= 0 and c >= 0 and r < rows and c < cols and heights[r][c] >= heights[i][j] and (r, c) not in visit:
+                    dfs(r, c, visit)
+                    
+        for i in range(rows):
+            dfs(i, 0, pac)
+            dfs(i, cols - 1, atl)
             
-        for r in range(rows):
-            dfs(r, 0, pac, heights[r][0])
-            dfs(r, cols - 1, atl, heights[r][cols - 1])
+        for j in range(cols):
+            dfs(0, j, pac)
+            dfs(rows - 1, j, atl)
             
-        return list(pac.intersection(atl))
-        
+        return atl.intersection(pac)
+            
