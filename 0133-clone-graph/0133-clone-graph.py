@@ -9,15 +9,18 @@ class Node:
 from typing import Optional
 class Solution:
     def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
-        nodeMap = {}
+        nodeMap = defaultdict(list)
         
         def traverse(node):
             if node.val in nodeMap:
                 return nodeMap[node.val]
             newNode = Node(node.val)
             nodeMap[node.val] = newNode
-            for n in node.neighbors:
-                newNode.neighbors.append(traverse(n))
+            for neighbor in node.neighbors:
+                newNode.neighbors.append(traverse(neighbor))
             return newNode
         
         return traverse(node) if node else None
+            
+        
+        
